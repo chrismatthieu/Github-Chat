@@ -1,0 +1,18 @@
+== GitHub Chat
+
+This is a Chrome Extension for adding chat to an issues page on Github.
+
+== Installation Instructions
+
+- Open Chrome browser
+- Navigate to chrome://extensions/
+- Click on (+) Developer Mode
+- Click on Load unpacked extension
+- Navigate to your local instance of this code
+
+== Usage Instructions
+
+- Navigate to any repo's issues page i.e. https://github.com/nodester/nodester/issues
+- You should see a new Chat button next to the New Issue button.
+- Clicking Chat should open a new window with Chats.io directed to a chat room of the Repo name.  This is a global chatroom for all of the repo's activity.
+

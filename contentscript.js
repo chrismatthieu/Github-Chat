@@ -1,13 +1,10 @@
-// var regex = /[01]?[- .]?\(?[2-9]\d{2}\)?[- .]?\d{3}[- .]?\d{4}/g;
-// var regex = /1?[- .]?\(?[2-9]\d{2}\)?[- .]?\d{3}[- .]?\d{4}/g;
-// var regex = /[>\s]1?[- \.]?\(?[2-9]\d{2}\)?[- \.]?\d{3}[- \.]?\d{4}[<\s]/g;
-// var regex = /[>\s]1?[- \.]?\(?[2-9]\d{2}\)?[- \.]?\d{3}[- \.]?\d{4}/g;
-var regex = /[\s]1?[- \.]?\(?[2-9]\d{2}\)?[- \.]?\d{3}[- \.]?\d{4}/g;
+var regex = /<span><span class=\"icon\"><\/span>New Issue<\/span><\/a>/g;
 var page;
 var hits;
+var repo;
 
 // Test the text of the body element against our regular expression.
-if (regex.test(document.body.innerText)) {
+if (regex.test(document.documentElement.innerHTML)) {
   // The regular expression produced a match, so notify the background page.
 
 	// page = document.body.innerHTML;
@@ -16,8 +13,23 @@ if (regex.test(document.body.innerText)) {
 	hits = page.match(regex);
 	
 	for (var i = 0; i < hits.length; i += 1) {
-	    // page = page.replace(hits[i], '<a href="http://phonophone.heroku.com?phone=' + trimString(hits[i]) + '">' + hits[i] + '</a>');
-	    page = page.replace(hits[i], '<a href="#" onclick="javascript:window.open(\'http://phonophone.heroku.com?phone=' + trimString(hits[i]) + '\' , \'popup_id\', \'scrollbars,resizable,width=350,height=400\')">' + hits[i] + '</a>');
+		
+	// 	find the repo name i.e. GitHub.repoName = "nodester"
+      var re1='(GitHub\\.repoName)';	// Fully Qualified Domain Name 1
+      var re2='.*?';	// Non-greedy match on filler
+      var re3='((?:[a-z][a-z0-9_]*))';	// Variable Name 1
+
+      var p = new RegExp(re1+re2+re3,["i"]);
+      var m = p.exec(page);
+      if (m != null)
+      {
+          var fqdn1=m[1];
+          repo=m[2];
+      }
+		
+		
+		
+	    page = page.replace(hits[i], '<span><span class="icon"></span>New Issue</span></a></li><li class><a href="#" onclick="javascript:window.open(\'http://chats.io/' + repo + '\', \'popup_id\', \'scrollbars,resizable,width=600,height=500\')"  class="minibutton btn-new-issue "><span><span class="icon"></span>Chat</span></a>');
 	// console.log('found: ' + trimString(hits[i]))
 	}
 	
