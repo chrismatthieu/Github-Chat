@@ -12,7 +12,7 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js" : ["contentscript.js"],
+      "js" : [ "jquery-1.6.2.min.js", "contentscript.js"],
       "run_at" : "document_idle"
     }
   ],

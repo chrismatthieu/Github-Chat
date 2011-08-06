@@ -1,7 +1,12 @@
+// require('/jquery-1.6.2.min.js');
+
+// $(document).ready(function(){
+
 var regex = /<span><span class=\"icon\"><\/span>New Issue<\/span><\/a>/g;
 var page;
 var hits;
 var repo;
+var user;
 
 // Test the text of the body element against our regular expression.
 if (regex.test(document.documentElement.innerHTML)) {
@@ -27,9 +32,10 @@ if (regex.test(document.documentElement.innerHTML)) {
           repo=m[2];
       }
 		
+	user = $('a.name').html();	
+	// alert(user);
 		
-		
-	    page = page.replace(hits[i], '<span><span class="icon"></span>New Issue</span></a></li><li class><a href="#" onclick="javascript:window.open(\'http://chats.io/' + repo + '\', \'popup_id\', \'scrollbars,resizable,width=600,height=500\')"  class="minibutton btn-new-issue "><span><span class="icon"></span>Chat</span></a>');
+	    page = page.replace(hits[i], '<span><span class="icon"></span>New Issue</span></a></li><li class><a href="#" onclick="javascript:window.open(\'http://groupim.heroku.com?chatroom=' + repo + '&username=' + user + '\', \'popup_id\', \'scrollbars,resizable,width=600,height=500\')"  class="minibutton btn-new-issue "><span><span class="icon"></span>Chat</span></a>');
 	// console.log('found: ' + trimString(hits[i]))
 	}
 	
@@ -43,6 +49,7 @@ if (regex.test(document.documentElement.innerHTML)) {
   // console.log('no matches')
 }
 
+// }
 
 //To trim leading or trailing spaces
 function trimString (str) {
