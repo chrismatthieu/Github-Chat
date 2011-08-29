@@ -29,8 +29,8 @@ if (regex.test(document.documentElement.innerHTML)) {
 		
 	user = $('a.name').html();	
 	
-	$('ul.actions').append('<li class><a href="#" onclick="javascript:window.open(\'http://groupim.heroku.com?chatroom=' + repo + '&username=' + user + '\', \'popup_id\', \'scrollbars,resizable,width=600,height=500\')"  class="minibutton btn-new-issue "><span><span class="icon"></span>Chat</span></a></li>');
-		
+	// $('ul.actions').append('<li class><a href="#" onclick="javascript:window.open(\'http://groupim.heroku.com?chatroom=' + repo + '&username=' + user + '\', \'popup_id\', \'scrollbars,resizable,width=600,height=500\')"  class="minibutton btn-new-issue "><span><span class="icon"></span>Chat</span></a></li>');
+	$('ul.actions').last().append('<li class><a href="#" onclick="javascript:window.open(\'http://redfire.4ng.net:7070/inspired/github-phono/groupchat.html?room=' + repo + '&nickname=' + user + '\', \'popup_id\', \'scrollbars,resizable,width=675,height=700\')"  class="minibutton btn-new-issue "><span><span class="icon"></span>Chat</span></a></li>');	
 	
   	chrome.extension.sendRequest({}, function(response) {});
 
