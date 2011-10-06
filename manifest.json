@@ -1,6 +1,6 @@
 {
   "name" : "GitHub Chat",
-  "version" : "0.1.1",
+  "version" : "0.1.2",
   "description" : "Chat and conference with your peers on GitHub",
   "background_page" : "background.html",
   "browser_action" : {
